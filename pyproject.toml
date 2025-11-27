@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/package_name"]
+
+[project]
+name = "codex-template"
+version = "0.1.0"
+description = "Opinionated starter template for Codex-inspired Python projects."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Codex Template Maintainers" }]
+keywords = ["codex", "template", "uv", "pre-commit"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Libraries",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/your-org/codex-template"
+Repository = "https://github.com/your-org/codex-template"
+Issues = "https://github.com/your-org/codex-template/issues"
+
+[project.scripts]
+codex-template = "package_name.main:cli"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "C4"]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[tool.uv]
+package = true
+
+[dependency-groups]
+dev = [
+  "black>=24.8.0",
+  "ruff>=0.6.8",
+  "pytest>=8.3.0",
+  "pytest-cov>=5.0.0",
+  "pre-commit>=4.0.1",
+]
